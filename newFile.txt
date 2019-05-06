@@ -1,6 +1,0 @@
-What is your name?
-
-From branch Jha
-
-
-changes to files of Jha.
