@@ -1,7 +1,0 @@
-What is your name?
-
-From branch Jha
-
-This is just like creating a new file.
-
-This is one added line to cloned project.
