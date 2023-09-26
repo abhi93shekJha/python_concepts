@@ -210,7 +210,7 @@ print(result)
 
 Adds extra instance variables, methods to an existing class.
 Modifies an existing method as well.
-The decorater(the method) is called at the time of object creation.
+The extra attributes and behaviours get added when the class is defined. Or loaded.
 
 More information in the code.
 
