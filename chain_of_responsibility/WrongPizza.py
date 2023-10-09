@@ -1,0 +1,2 @@
+class WrongPizza(Exception):
+    pass
