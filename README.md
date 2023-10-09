@@ -210,6 +210,7 @@ print(result)
 
 Adds extra instance variables, methods to an existing class.
 Modifies an existing method as well.
+The extra attributes and behaviours get added when the class is defined. Or loaded.
 
 More information in the code.
 
