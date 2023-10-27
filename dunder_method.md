@@ -5,6 +5,7 @@
 - def __ len__ is called when len([1,2,3]) is used (built in function). This is called in the list class.
 - We can customize the behaviour of objects using these methods.
 - Python 'object' class has default implementation of all the dunder methods available.
+- dir(object_name) lists all the dunder methods.
 ### For example
 ```python
   class SuperList(list):
