@@ -208,8 +208,9 @@ print(result)
 
 ## Class Decorators:
 
-Adds extra instance variables, methods to an existing class.
-Modifies an existing method as well.
+- Adds extra instance variables, methods to an existing class.
+- The extra attributes and behaviours get added when the class is defined or loaded.
+- Modifies an existing method as well.
 
 More information in the code.
 
