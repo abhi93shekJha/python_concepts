@@ -84,3 +84,55 @@ my_class.print_anything = "hi!!"
 my_class.print_anything()  # Error, `my_class.print_anything` became a string attribute for the `my_class` object
 print(my_class.print_anything)  # Prints "hi!!"
 ```
+## 5. Private and protected in python
+- Private members have __(double underscore) before their name.
+- Protected members have _(single underscore) before their name.
+- Public members have no underscores before their name.
+- Note - We can access protected members from anywhere too, it is just recommended not to access them as public members.
+- Also, we can access private members too with name mangling, using _ClassName__privatemember.
+  
+## Inheritance
+- isinstance(object, className)
+- issubclass(ChildClass, ParentClass)  # True
+- All the class implicitly extends from 'object' class.
+- Python supports multiple inheritance.
+
+## Polymorphism
+Example:
+```python
+class Animal:
+    def __init__(self, type, name):  # type to be mammal or reptile
+        self.type = type
+        self.name = name
+
+    def _eat(self, food):   # not use it outside of child Class (although can be used)
+        print(f"{self.name} is eating, {food}.")
+
+    def make_sound_and_eat(self, food):
+        pass
+
+class Cow(Animal):
+    def __init__(self, type, name, animal):
+        Animal.__init__(self, type, name)  # or
+        super().__init__(type, name)    # this way no need to pass self
+        self.animal = animal
+
+    def make_sound_and_eat(self, food):
+        self._eat(food)
+        print("Mooooo!!")
+
+class Dog(Animal):
+    def make_sound_and_eat(self, food):
+        self._eat(food)
+        print("Woof Woof!!")
+
+# can accept any animal
+def eat_and_make_sound(animal, food):
+    animal.make_sound_and_eat(food)
+
+dog = Dog("Mammal", "Tommy")
+cow = Cow("Mammal", "Ganga", "cow")
+eat_and_make_sound(dog, "Pedigry")
+eat_and_make_sound(cow, "Grass")
+```
+
