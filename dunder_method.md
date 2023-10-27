@@ -4,7 +4,7 @@
 - def __ init__ is called when object is instantiated (some operation).
 - def __ len__ is called when len([1,2,3]) is used (built in function). This is called in the list class.
 - We can customize the behaviour of objects using these methods.
-- object class has default implementation of all the dunder methods available.
+- Python 'object' class has default implementation of all the dunder methods available.
 ### For example
 ```python
   class SuperList(list):
