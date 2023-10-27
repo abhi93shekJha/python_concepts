@@ -34,8 +34,10 @@ def my_function(parameter1, parameter2):
 
         process_data(name="Alice", age=25, city="New York")
 
-
-8. Using Functions as Variables:
+8. Higher Order Function (HOF) is a function in python that either accepts a function as a parameter or returns a function.
+   Below are some HOF explained.
+   
+9. Using Functions as Variables:
    (i) Assigning Functions to Variables:
    
    	    def say_hello():
@@ -65,7 +67,7 @@ def my_function(parameter1, parameter2):
 	    result = double(5)  # result will be 10
 		
 		
-9. Callback Functions:
+10. Callback Functions:
     
     It is a function that is passed to another function, and is executed within or after the execution of that function.
     
@@ -98,7 +100,7 @@ def my_function(parameter1, parameter2):
         sort_and_callback(numbers, find_max_sorted_list)
     
 
-10 Closure functions:
+11. Closure functions:
 	
     A concept where a function is enclosed inside a function. Function that are used inside a function and uses the variables of enclosing function.
     
@@ -160,7 +162,7 @@ def my_function(parameter1, parameter2):
     	      def increment():
                   nonlocal count
         	  count += 1
-              return count
+              	  return count
 
               return increment
 
