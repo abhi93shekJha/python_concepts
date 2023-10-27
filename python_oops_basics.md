@@ -96,6 +96,8 @@ print(my_class.print_anything)  # Prints "hi!!"
 - issubclass(ChildClass, ParentClass)  # True
 - All the class implicitly extends from 'object' class.
 - Python supports multiple inheritance.
+- In case of multiple inheritance, MRO (method resolution order) decides what method or attribute to be called.
+- object_name.mro() or object_name.__mro__ shows MRO.
 
 ## Polymorphism
 Example:
