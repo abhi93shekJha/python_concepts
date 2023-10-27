@@ -105,7 +105,7 @@ def my_function(parameter1, parameter2):
     A concept where a function is enclosed inside a function. Function that are used inside a function and uses the variables of enclosing function.
     
     Example-
-    
+    ```python
     def outer_function(x):
         # This is the enclosing (or outer) function
         def inner_function(y):
@@ -171,8 +171,8 @@ def my_function(parameter1, parameter2):
 	   count1 = counter()  # count1 is 1
 	   count2 = counter()  # count2 is 2
 	   count3 = counter()  # count3 is 3
-		 
-   
+ 		 
+       ```
 
 
 
