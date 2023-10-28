@@ -1,5 +1,5 @@
 # Generators in python
-- For faster iteration.
+- For faster iteration. Faster because they only compute next value when requested.
 - range(100) is created using generator. I have created a custom range below for understanding.
 - A generator is always an iterator, an iterator may or may not be a generator (for example list, or tuple are not generators).
 - A generator is created using "yield" keyword. "yield" pauses the current function and returns the current value, when next is called on that function.
