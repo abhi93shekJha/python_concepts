@@ -3,7 +3,6 @@
 - We use snake case for naming python modules (ex. module_name.py).
 - When we have multiple modules in a folder, we add an empty "__ init__.py" file in the folder to make it a package.
 - A module when imported is compiled by cpython and the compiled file is kept inside __pycache__ folder for quick access.
-- 
 ## Important points about if __ name__=='__ main__':
 - __ name__ shows the name of the module, which is generally script name.
 - only the script under execution, __ name__ shows as "__ main__".
