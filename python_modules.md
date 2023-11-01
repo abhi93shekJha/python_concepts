@@ -83,3 +83,4 @@ print(d[1])    # prints 0
 d = defaultdict(lambda: 5, {'a':1, 'b':2})
 print(d[2])     # prints 5
 ```
+### Note: Now dictionaries are ordered, no need to use OrderedDict().
