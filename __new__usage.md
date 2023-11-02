@@ -1,8 +1,12 @@
-## Understanding the `__new__` Method in Python
+## Understanding the `__new__` method in Python
 
-`__new__` method is called when we create an instance of a class. we can override this method to customize it's behaviour (often used to implement design patterns like the Singleton pattern).
-
-Takes in the class(cls) as variable in parameter, access the class variables ('_instance' in this case, which remains same for every new object created)
+- `__new__` method is called when we create an instance of a class.
+- We can override this method to customize it's behaviour (often used to implement design patterns like the Singleton pattern).
+- After this '__ init__' is called.
+- takes in a 'class object', and optionally, *args and **kwargs.
+- Everything in Python is an object.
+- A 'class object' is not instance of that class, but the class itself.
+- We can use it to invoke class attributes (that is represented by static variables in Java).
 
 ### Example Usage of `__new__`
 
@@ -10,9 +14,10 @@ Takes in the class(cls) as variable in parameter, access the class variables ('_
 class Singleton:
     _instance = None
 
-    def __new__(cls):
+    def __new__(cls, *args, **kwargs):
         if cls._instance is None:
-            cls._instance = super(Singleton, cls).__new__(cls)
+            # calls object's __new__ for applying default behaviour, which is object creation of Singleton class here
+            cls._instance = super(Singleton, cls).__new__(cls)   
         return cls._instance
 
 # Usage
