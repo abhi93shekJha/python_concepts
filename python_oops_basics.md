@@ -137,4 +137,56 @@ cow = Cow("Mammal", "Ganga", "cow")
 eat_and_make_sound(dog, "Pedigry")
 eat_and_make_sound(cow, "Grass")
 ```
+## Note: Remember that in inheritance, child will have access to all the parent's method including constructor. So, there is no need to add constructor in child unless we want extra attributes initialization inside child.
+
+## super() in python:
+- We use super().parent_method() to call a parent's method.
+- When using super().__ init__(), no need to pass in self (inside __ init__), it is simply calling the parent's method, just like we call using object.method().
+- super() is also called proxy object or "super" object.
+- super(MyClass, instance).parent_method() is also one way to call parent's method.
+- Here "MyClass" is the class in inheritance hierarchy above which the method search starts, not in the mentioned class.
+- And instance is something on which we want to call the method. It is the instance of the Class mentioned as second paramter.
+- Although super().parent_method() do the same thing but super(MyClass, instance).parent_name() is needed to resolve any confusion to select method incase of multiple inheritance. Example below.
+- Also, method  is called based on method resolution order (MRO). ClassName.__ mro__, prints Class's order to be used for method invocation. Python internally uses some algorithm.
+- We generally always use super() (without arguements), otherwise our inheritance hierarchy is complex. super() works in all the cases and runs method using MRO.
+### Example below:
+```python
+# Example 1
+class A:
+  def __init__(self, a):
+      self.a = a
+
+  def my_fun(self):
+      print(f"a={self.a} Running inside parent A")
+
+class B(A):
+  def __init__(self, a):
+      super().__init__(a)    # no need to pass self inside __init__
+      A.__init__(self, a)      # this is also one way to call parent __init__, self is needed to be passed
+      super(B, self).__init__(a)  # this is another way, telling to start the search of method __init__ from class A
+
+  def my_fun(self):
+      super(B, self).my_fun()   # my_fun is being searched in B then A, and it will be run on self object
+      print(f"inside B, running my_fun")
+
+b = B(3)
+b.my_fun()
+
+# Example 2- showing using super to resolve method confusion in multiple inheritance
+class A:
+  def my_fun(self):
+    print("for parent A, running my_fun")
+
+class B:
+  def my_fun(self):
+    print("for parent B, running my_fun")
+
+class Child(B, A):
+  def my_fun(self):
+    super(B, self).my_fun()  # this way of using super will now help us resolving conflict of which class's method to run
+# here it will run for A (which is above B in hierarchy)
+
+child = Child()
+child.my_fun()   # for parent A, running my_fun
+```
 
