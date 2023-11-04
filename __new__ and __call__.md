@@ -28,7 +28,7 @@ print(instance1 is instance2)  # This will print True, indicating that both vari
 ```
 
 ### __ call__ dunder method
-- It is an special method that runs when and instance object is called as a method.
+- It is an special method that runs when an instance object is called as a method.
 - Example shown below.
 ```python
 class A:
