@@ -25,4 +25,20 @@ instance1 = Singleton()
 instance2 = Singleton()
 
 print(instance1 is instance2)  # This will print True, indicating that both variables refer to the same instance.
+```
 
+### __ call__ dunder method
+- It is an special method that runs when an instance object is called as a method.
+- Example shown below.
+```python
+class A:
+  def __init__(self, name):
+    self.name = name  
+  def __call__(self, *args, **kwargs):
+    print("{self.name}, call is run")
+
+a = A("Abhishek")
+a()    # prints, Abhishek call is run
+# We can pass in arguements also
+#exampel: a("Abhishek", "Jha")
+```

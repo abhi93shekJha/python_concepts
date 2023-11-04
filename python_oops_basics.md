@@ -89,7 +89,7 @@ print(my_class.print_anything)  # Prints "hi!!"
 - Protected members have _(single underscore) before their name.
 - Public members have no underscores before their name.
 - Note - We can access protected members from anywhere too, it is just recommended not to access them as public members.
-- Also, we can access private members too with name mangling, using _ClassName__privatemember.
+- Also, we can access private members too with name mangling, using object_name._ClassName__privatemember.
   
 ## Inheritance
 - isinstance(object, className)
