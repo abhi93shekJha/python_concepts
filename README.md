@@ -1,6 +1,7 @@
 # Advance Python concepts notes and codes
 I have explained advance python concepts in simple terms here.
 
+## Miscellaneous Concepts
 ### pdb (Python Debugger)
 - import pdb, we can debug using terminal.
 - pdb.set_trace(), we add this method, whereever we want to stop the debugger.
