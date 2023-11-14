@@ -11,7 +11,7 @@
 ### Process
 - It is a program in execution.
 - Many processes run by os in the backgroud.
-- It has it's own memory space (heaps, code, data (static or global)).
+- It has it's own memory space (heaps, code, data (static or global), files).
 - It also has its own register and stack.
 - A program contains instructions and it is run by a process.
 - Multiple processes can run a single program.
@@ -19,7 +19,7 @@
 ## Threads
 - It is a lightweight process.
 - A single process has multiple threads.
-- Threas is a unit of execution within a process.
-- They share memory space (heaps, code, data (static or global)). That is why synchronization and locking is needed.
-- They have their own registers and stacks (local variables).
+- A thread is a unit of execution within a process.
+- They share memory space (heaps, code, data (static or global), files). That is why synchronization and locking is needed to avoid inconsistency.
+- They have their own registers(program counters) and stacks(functions with local variables).
   
