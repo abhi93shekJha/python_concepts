@@ -34,3 +34,16 @@
 | 5. Example: Opening two different browsers. | 5. Example: Opening tabs in the same browser. |
 
 
+### Concurrency
+- It is not parallel execution. Multiple threads can work on multiple tasks by jumping from on task to another (context switching). But at one time only one thread runs.
+- Context switching is time consuming.
+- A single core can only execute one thread at a time concurrently.
+- It is generally helpful when there is heavy I/O operations (reading, writing to a file, making a network request etc.).
+- In python multithreading in only concurrent unlike java where is it parallel as well.
+
+### Parallelism
+- Here multiple threads can run concurrently and at the same time.
+- Use multiple cores in a cpu.
+- Java automatically achieves this using threads. Python uses multiple processes to achieve this.
+
+
