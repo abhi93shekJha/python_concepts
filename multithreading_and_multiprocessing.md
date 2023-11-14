@@ -23,3 +23,14 @@
 - They share memory space (heaps, code, data (static or global), files). That is why synchronization and locking is needed to avoid inconsistency.
 - They have their own registers(program counters) and stacks(functions with local variables).
   
+### Processes vs Threads
+
+| Processes                               | Threads                                    |
+| ----------------------------------------| ------------------------------------------ |
+| 1. These are called heavyweight processes and they have their own memory space. | 1. These are called lightweight processes as they share memory space. |
+| 2. Context Switching is slow in processes. | 2. Context switching is faster among threads. |
+| 3. Processes have their own code, data/files, heaps, stacks, and registers. | 3. Threads share code, data/files, heaps, but have their own stacks and registers. |
+| 4. Processes are independent of each other. Communication is slower. | 4. Threads are interdependent as they share resources. Communication is faster. |
+| 5. Example: Opening two different browsers. | 5. Example: Opening tabs in the same browser. |
+
+
