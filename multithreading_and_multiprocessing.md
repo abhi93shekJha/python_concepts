@@ -123,5 +123,35 @@ Main done!
 - This is a resource and time consuming process. As threads have their own stack, register and creating and destroying is time taking process.
 - We should have pool of worker threads to execute bulk of tasks as it comes. ThreadPoolExecutor helps with this.
 
+```python
+from concurrent.futures import ThreadPoolExecutor
+import time
+def my_fun(thread_num):
+  time.sleep(3)
+  print(f'Thread {thread_num} is executing!!')
+  print(f"Thread {thread_num} finished executing!!")
+  return thread_num
 
+if __name__ == "__main__":
+  # using context manager is a good practice, as it closes automatically
+  with ThreadPoolExecutor(max_workers=4) as executor:
+    results = executor.map(my_fun, [0, 1, 2, 3, 4, 5], timeout=10)
+    # this results is an iterable and gives us output sequentially 
+    # according to input passed to map()
+    # timeout will wait for 10 seconds for the tasks to complete, otherwise raises TimeoutError()
+    for result in results: # this blocks
+      # result contains what is returned from the function
+      print(result)   # waits and then prints
 
+  # using submit, returns a Future object
+  with ThreadPoolExecutor(max_workers=5) as executor:
+    # submit is a non blocking call
+    future1 = executor.submit(my_fun, 0)
+    future2 = executor.submit(my_fun, 1)
+
+    # these two are blocking calls
+    print(future1.result(timeout=5))  # timeout is optional 
+    print(future2.result())
+    
+  print("Main done!")
+```
