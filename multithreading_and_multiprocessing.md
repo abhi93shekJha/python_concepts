@@ -155,3 +155,61 @@ if __name__ == "__main__":
     
   print("Main done!")
 ```
+
+### Race condition
+- This happens when a memory is shared among multiple threads.
+- Below example will show an object being shared among two threads and how it leads to inconsistent state of data.
+```python
+from concurrent.futures import ThreadPoolExecutor
+import time
+class Data:
+  def __init__(self):
+    self.data = 0
+  
+  def update(self):
+    local_var = self.data
+    time.sleep(1)   # this will make first thread wait, and second one will get not modified self.data value, causing inconsistency
+    local_var += 1
+    self.data = local_var
+
+if __name__=="__main__":
+  obj = Data()
+  # obj.update()
+  with ThreadPoolExecutor(max_workers=2) as executor:
+    # both the below threads will execute the same object's method
+    executor.submit(obj.update)
+    executor.submit(obj.update)
+    
+  # After this obj.data should be 2, but it is 1
+  # Note here that first the above two threads finish before main thread finishes, because of using context manager
+  # context manager ensures the closing of threads
+  print(obj.data)  #prints 1
+```
+### Fixing Race condition
+- We can use locks (mutex) shown in below example (threading.Lock(), it should be shared as well)
+```python
+from concurrent.futures import ThreadPoolExecutor
+import time
+import threading
+class Data:
+  def __init__(self):
+    self.data = 0
+    self.__lock = threading.Lock()
+  
+  def update(self):
+    with self.__lock:  # this is it, it will make the thread enter with a lock
+      local_var = self.data
+      time.sleep(1)   
+      local_var += 1
+      self.data = local_var
+
+if __name__=="__main__":
+  obj = Data()
+  with ThreadPoolExecutor(max_workers=2) as executor:
+    # both the below threads will execute the same object's method
+    executor.submit(obj.update)
+    executor.submit(obj.update)
+    
+  print(obj.data)  # prints 2 now
+  
+```
