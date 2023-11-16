@@ -211,5 +211,41 @@ if __name__=="__main__":
     executor.submit(obj.update)
     
   print(obj.data)  # prints 2 now
-  
+```
+### Deadlock
+- Occurs when a thread waits for the lock, which is locked by another thread and both wait for each other to finish.
+- this condition blocks both the threads forever.
+```python
+import threading
+import time
+lock1 = threading.Lock()
+lock2 = threading.Lock()
+
+def fun1():
+  with lock1:
+    print("Thread 1 working!!")
+    time.sleep(.1)  # this will give time for 2nd thread to run
+    with lock2:  # this lock is with another thread
+      print("Thread 1 won't reach here!!")
+
+def fun2():
+  with lock2:
+    print("Thread 2 working!!")
+    time.sleep(.1)
+    with lock1:  # this lock is with another thread
+      print("Thread 1 won't reach here!!")
+
+thread1 = threading.Thread(target=fun1)
+thread2 = threading.Thread(target=fun2)
+
+thread1.start()
+thread2.start()
+```
+### Producer and Consumer problem
+- A producer produces data into a buffer and consumer uses it.
+- We can get an exception in case the buffer is full and producer tries to push more to it.
+- Similarly if buffer is empty and consumer tries to consume.
+- This happens because of race condition, where a thread already enters the code and reads bad data to produce or consume.
+- There are two ways to implement this,
+```python
 ```
