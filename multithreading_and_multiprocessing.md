@@ -118,5 +118,10 @@ Thread 4 finished executing!!
 Main done!
 '''
 ```
+### ThreadPoolExcecutor
+- We should not always create and destroy a separate thread (as we did above) for ad-hoc tasks. If there are many ad-hoc tasks.
+- This is a resource and time consuming process. As threads have their own stack, register and creating and destroying is time taking process.
+- We should have pool of worker threads to execute bulk of tasks as it comes. ThreadPoolExecutor helps with this.
+
 
 
