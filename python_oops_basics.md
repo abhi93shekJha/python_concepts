@@ -75,7 +75,7 @@ Example:
 
 ```python
 class MyClass:
-    def print_anything():
+    def print_anything(self):
         print("hey!!")
 
 my_class = MyClass()
@@ -92,7 +92,7 @@ print(my_class.print_anything)  # Prints "hi!!"
 - Also, we can access private members too with name mangling, using object_name._ClassName__privatemember.
   
 ## Inheritance
-- isinstance(object, className)
+- isinstance(object, className)   # True, if 'object' is an instance of 'className'
 - issubclass(ChildClass, ParentClass)  # True
 - All the class implicitly extends from 'object' class.
 - Python supports multiple inheritance.
@@ -107,7 +107,7 @@ class Animal:
         self.type = type
         self.name = name
 
-    def _eat(self, food):   # not use it outside of child Class (although can be used)
+    def _eat(self, food):   # do not use this protected member outside of child class (although it can be used)
         print(f"{self.name} is eating, {food}.")
 
     def make_sound_and_eat(self, food):
@@ -119,12 +119,12 @@ class Cow(Animal):
         super().__init__(type, name)    # this way no need to pass self
         self.animal = animal
 
-    def make_sound_and_eat(self, food):
+    def make_sound_and_eat(self, food):   # overriding
         self._eat(food)
         print("Mooooo!!")
 
-class Dog(Animal):
-    def make_sound_and_eat(self, food):
+class Dog(Animal):    # this class gets all of it's parent methods including __init__()
+    def make_sound_and_eat(self, food):    # overriding
         self._eat(food)
         print("Woof Woof!!")
 
@@ -144,8 +144,8 @@ eat_and_make_sound(cow, "Grass")
 - When using super().__ init__(), no need to pass in self (inside __ init__), it is simply calling the parent's method, just like we call using object.method().
 - super() is also called proxy object or "super" object.
 - super(MyClass, instance).parent_method() is also one way to call parent's method.
-- Here "MyClass" is the class in inheritance hierarchy above which the method search starts, not in the mentioned class.
-- And instance is something on which we want to call the method. It is the instance of the Class mentioned as second paramter.
+- Here "MyClass" is the class in inheritance hierarchy above which the method search starts, search do not happen in the mentioned class ('MyClass' here).
+- And instance is something on which we want to call the method. We generally pass in self at the place of instance. Any other instance can also be passed on which we want to run the method in higher classes (in hierarchy).
 - Although super().parent_method() do the same thing but super(MyClass, instance).parent_name() is needed to resolve any confusion to select method incase of multiple inheritance. Example below.
 - Also, method  is called based on method resolution order (MRO). ClassName.__ mro__, prints Class's order to be used for method invocation. Python internally uses some algorithm.
 - We generally always use super() (without arguements), otherwise our inheritance hierarchy is complex. super() works in all the cases and runs method using MRO.
@@ -166,7 +166,7 @@ class B(A):
       super(B, self).__init__(a)  # this is another way, telling to start the search of method __init__ from class A
 
   def my_fun(self):
-      super(B, self).my_fun()   # my_fun is being searched in B then A, and it will be run on self object
+      super(B, self).my_fun()   # my_fun is being searched above B i.e., in A, and it will be run on self object
       print(f"inside B, running my_fun")
 
 b = B(3)
