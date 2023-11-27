@@ -2,23 +2,26 @@
 
 - **Compilers and Interpreters:**
 
-    - We write source code, and either an interpreter or a compiler converts them into machine-level language (0 or 1).
+    - We write source code, and either an interpreter or a compiler converts them into machine-level language (0 and 1).
 
     - An interpreter reads line by line and converts it.
 
-    - A compiler takes the entire source code in at one time and converts it into a binary file to be read by the machine.
+    - A compiler takes the entire source code in at one time and converts it into a binary file(0s and 1s) to be read by the machine.
+      (Actually the source code is first converted to bytecode (.class files) and then JVM takes in the bytecode and converts it to machine readable instructions. The JVM uses Just In Time and other optimisation techniques to improve the performance of the conversion.)
 
     - Both interpreter and compiler are codes written by humans. They act as a translator to convert human-readable codes to machine-readable code.
 
 - **Fact:**
 
-    - Python programs are first compiled (into bytecode) and then interpreted.
+    - Python programs are first compiled (into bytecodes(.pyc files)) by interpreter and then interpreted by the interpreter.
+    - Bytecode is platform independent intermediate code, which is interpreted later in case of python.
+    - Platform independent means, it can run on different os, it only requires specific Virtual machine (JVM or PVM) to execute irrespective of software or hardware specifications.
 
 - **About interpreters:**
 
     - The Python code is run by an interpreter (e.g., CPython, Jython, PyPy, etc., interpreters written in C, Java, or Python languages, respectively).
 
-    - It is converted into bytecode, which in turn is fed to the CPython virtual machine (CPython VM). After this, it runs on our machine (laptop, mobile, etc.).
+    - It is converted into bytecode(.pyc files), which in turn is fed to the CPython virtual machine (CPython VM) which iterprets it line by line to convert it to machine readable instructions. After this, it runs on our machine (laptop, mobile, etc.).
 
     - When we download Python, we actually download the CPython interpreter, and all the documentations are written according to the CPython interpreter.
 
@@ -27,8 +30,11 @@
     - `iq = 100`
 
     - `user_age = iq / 5`
+ 
+    - If it is a complete line of code, it is an statement. If it produces a value, it is an expression.
 
-    - Here, `iq / 5` is called an expression (since it is calculating something), and the complete line `user_age = iq / 5` is a statement (where we are calculating age and assigning it to the `user_age` variable).
+    - Here, `iq / 5` is called an expression (since it is calculating something), and the complete line `user_age = iq / 5` is an statement (where we are calculating age and assigning it to the `user_age` variable).
+    
 
 - **Augmented assignment operator:**
 
@@ -60,7 +66,7 @@
 
     - Key can only be immutable objects. Eg. "jha", 12, True, (1, 2, 3).
 
-    - We can create a dictionary using `dict(key=value)`. Ex. `my_dict = dict("a"=24)`.
+    - We can create a dictionary using `dict(key=value)`. Ex. `my_dict = dict(a=24, b=25)`. this will create {"a":24, "b":25}. Please mind that in "dict(a=24, b=25)" a and b are not strings, it is written like a variable.
 
     - `dict.popitem()`, used to remove the last item (key, value pair) from the dictionary. Used for destructively iterating over a dictionary.
 
@@ -85,7 +91,7 @@
 
     - They support all mathematical set operations, e.g., Union, isDisjoint, isSubset, isSuperSet, difference, differenceUpdate, intersection, etc.
 
-- **Logical Operator:**
+- **Logical Operators:**
 
     - `and` and `or` are short-circuit in Python.
 
@@ -107,7 +113,7 @@
 
 - **for and while:**
 
-    - The `else` block with `for` and `while` loops will not execute if there is a `break`.
+    - The `else` block with `for` and `while` loops will not execute if there is a `break` encountered.
 
 - **Functions:**
 
@@ -118,7 +124,7 @@
             print(f'Name is {name}, age is {age}')
         ```
 
-        - `myfun('Sunny')`   # prints Name is Sunny, age is 29
+        - `myfun('Sunny')`   # prints "Name is Sunny, age is 29"
 
     2. **Keyword arguments:**
 
@@ -127,7 +133,7 @@
             print(f'Name is {name}, age is {age}')
         ```
 
-        - `myfun(age=29, name='Abhishek')`   # prints Name is Abhishek, age is 29
+        - `myfun(age=29, name='Abhishek')`   # prints "Name is Abhishek, age is 29" (mind that arguments position is different than parameters position)
 
     3. **Positional arguments:**
 
@@ -136,11 +142,11 @@
             print(f'Name is {name}, age is {age}')
         ```
 
-        - `myfun('Abhishek', 29)`  # prints Name is Abhishek, age is 29
+        - `myfun('Abhishek', 29)`  # prints "Name is Abhishek, age is 29"
 
     4. **Methods vs functions:**
 
-        - Functions are simply methods written in a script.
+        - Functions are simply methods written in an script.
 
         - Methods are methods defined in a class, or built-in methods. Example: `[1, 2, 3].clear()`, `dict.items()`, `'jha'.capitalize()`, etc.
 
@@ -170,7 +176,7 @@
 
         - `myfun(1, 2, 3, name="Abhishek", age=29.0)`
 
-        - IMPORTANT: Rule is parameters, `*args`, default parameters, `**kwargs`
+        - __IMPORTANT__: When defining a function, rule for parameters is: parameters, `*args`, default parameters, `**kwargs`
 
 - **Walrus operator (new to Python 3.8):**
 
