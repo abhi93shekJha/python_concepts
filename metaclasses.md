@@ -17,10 +17,11 @@ print(type(A))   # it prints, <class 'type'>
 # 'type' class creates a class object
 
 # We can create a class using type class as below:
-Dog = type("Dog", (), {"breed":"German Shephard"})
+dog_class = type("Dog", (), {"breed":"German Shephard"})
     # type(classname, (Supertype_tuple,), {attributes and methods dict})
 
-print(Dog)     # <class '__main__.Dog'>
+# dog_class variable is referencing 'Dog' class (not object).
+print(dog_class)     # <class '__main__.Dog'>
 
 class User:
   def __init__(self, name):
@@ -52,7 +53,7 @@ class Meta(type):
     print(temp_attr)  
     return type(class_name, bases_tuple, temp_attr)
 
-# when this syntax runs, Meta with manipulate the attributes
+# when this syntax runs, Meta will manipulate the attributes
 class User(metaclass=Meta):
   name = "Abhishek"
 
