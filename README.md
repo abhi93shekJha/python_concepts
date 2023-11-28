@@ -1,4 +1,4 @@
-# Advance Python concepts notes and codes
+# Advance Python concepts notes and example codes
 I have explained advance python concepts in simple terms here.
 
 ## Miscellaneous Concepts
