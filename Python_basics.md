@@ -66,7 +66,7 @@
 
     - Key can only be immutable objects. Eg. "jha", 12, True, (1, 2, 3).
 
-    - We can create a dictionary using `dict(key=value)`. Ex. `my_dict = dict(a=24, b=25)`. this will create {"a":24, "b":25}. Please mind that in "dict(a=24, b=25)" a and b are not strings, it is written like a variable.
+    - We can create a dictionary using `dict(key=value)`. Ex. `my_dict = dict(a=24, b=25)`. this will create {"a":24, "b":25}. Please mind that in "dict(a=24, b=25)" a and b are not strings, these are keyword arguments.
 
     - `dict.popitem()`, used to remove the last item (key, value pair) from the dictionary. Used for destructively iterating over a dictionary.
 
