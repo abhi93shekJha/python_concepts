@@ -5,7 +5,7 @@
 
 ### Stack
 - To access data in LIFO manner.
-- Generaly methods are placed in stack in order of their execution.
+- Generally methods are placed in stack in order of their execution.
 - And the local variables contained in the methods.
 
 ### Process
@@ -39,7 +39,7 @@
 - Context switching is time consuming.
 - A single core can only execute one thread at a time concurrently.
 - It is generally helpful when there is heavy I/O operations (reading, writing to a file, making a network request etc.).
-- In python multithreading in only concurrent unlike java where is it parallel as well.
+- In python multithreading is only concurrent unlike java where is it parallel as well.
 
 ### Parallelism
 - Here multiple threads can run concurrently and at the same time.
@@ -157,7 +157,7 @@ if __name__ == "__main__":
 ```
 
 ### Race condition
-- This happens when a memory is shared among multiple threads.
+- This happens when a memory is shared among multiple threads or we can say when multiple threads enter critical section.
 - Below example will show an object being shared among two threads and how it leads to inconsistent state of data.
 ```python
 from concurrent.futures import ThreadPoolExecutor
@@ -168,7 +168,7 @@ class Data:
   
   def update(self):
     local_var = self.data
-    time.sleep(1)   # this will make first thread wait, and second one will get not modified self.data value, causing inconsistency
+    time.sleep(1)   # this will make first thread wait, and second one will get old(not modified) self.data value, causing inconsistency
     local_var += 1
     self.data = local_var
 
