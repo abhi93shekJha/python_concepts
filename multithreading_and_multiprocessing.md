@@ -118,6 +118,18 @@ Thread 4 finished executing!!
 Main done!
 '''
 ```
+### Creating thread by subclassing theading.Thread
+```python
+import threading
+class MyThread(threading.Thread):
+  def run():
+    print("Hello from a separate thread!!")
+
+my_thread = MyThread()
+my_thread.start()
+# wait for my_thread to finish
+my_thread.join()
+```
 ### ThreadPoolExcecutor
 - We should not always create and destroy a separate thread (as we did above) for ad-hoc tasks. If there are many ad-hoc tasks.
 - This is a resource and time consuming process. As threads have their own stack, register and creating and destroying is time taking process.
@@ -245,7 +257,115 @@ thread2.start()
 - A producer produces data into a buffer and consumer uses it.
 - We can get an exception in case the buffer is full and producer tries to push more to it.
 - Similarly if buffer is empty and consumer tries to consume.
-- This happens because of race condition, where a thread already enters the code and reads bad data to produce or consume.
-- There are two ways to implement this,
+- This problem arises when there are multiple producers and consumers. When a producer checks that an space is present to produce (in the buffer), and execution goes to another producer, and this other producer finishes producing. This makes the previous paused producer try to produce to an already full buffer, cauring error.
+- Same problem happens with multiple consumers.
+- We can also say, this happens because of race condition, where a thread already enters the critical section and reads bad data to produce or consume.
 ```python
+import threading
+import random
+import time
+import queue
+
+class Buffer():
+  def __init__(self, size):
+    self.size = size
+    self.buffer = queue.Queue(maxsize=size) # fixed buffer
+
+  def add_item(self, item):
+    if self.buffer.not_full:
+      self.buffer.put(item, block=False)
+    else:
+      pass
+
+  def remove_item(self):
+    if self.buffer.not_empty:
+      return self.buffer.get(block=False)
+    else:
+      pass
+
+class Producer(threading.Thread):
+  def __init__(self, buffer):
+    super().__init__()
+    self.buffer = buffer
+
+  def run(self):
+    while True:
+      item = random.randint(1, 101)
+      self.buffer.add_item(item)
+      print(f"Producer put {item} in the buffer")
+      # random.uniform() generates a float in range given, excluding 0.5
+      time.sleep(random.uniform(0.1, 0.5))
+
+class Consumer(threading.Thread):
+  def __init__(self, buffer):
+    super().__init__()
+    self.buffer = buffer
+
+  def run(self):
+    while True:
+      item = self.buffer.remove_item()
+      print(f"Consumer took {item} from the buffer")
+      time.sleep(random.uniform(0.1, 0.5))
+
+buffer = Buffer(10)
+for i in range(10):
+  producer = Producer(buffer)
+  consumer = Consumer(buffer)
+  producer.start()
+  consumer.start()
+```
+- This can be solved by synchronizing the critical section.
+- Another way is using semaphore shown below.
+```python
+import threading
+import random
+import time
+import queue
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+class Buffer():
+  def __init__(self, size):
+    self.size = size
+    self.buffer = []
+    self.mutex = threading.Lock()
+    self.empty = threading.Semaphore(self.size)
+    self.full = threading.Semaphore(0)
+
+  def add_item(self, item):
+    with self.empty:
+      with self.mutex:
+          self.buffer.append(item)
+      self.full.release()  
+
+  def remove_item(self):
+    with self.full:
+      with self.mutex:
+        item = self.buffer.pop(0)
+      self.empty.release()
+      return item
+
+def producing_thread(buffer, item):
+  time.sleep(1)
+  print(f"Producer added {item}")
+  buffer.add_item(item)
+
+def consuming_thread(buffer):
+  item = buffer.remove_item()
+  time.sleep(1)
+  print(f"Consumer consumed {item}!!")
+
+buffer = Buffer(10)
+with ThreadPoolExecutor(max_workers=20) as executor:
+  producer_tasks = [executor.submit(producing_thread, buffer, i) for i in range(10)]
+
+  # Wait for all producer tasks to complete
+  for future in as_completed(producer_tasks):
+      future.result()
+
+  # Now submit the consumer tasks
+  consumer_tasks = [executor.submit(consuming_thread, buffer) for _ in range(10)]
+
+  # Wait for all consumer tasks to complete
+  for future in as_completed(consumer_tasks):
+      future.result()
 ```
