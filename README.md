@@ -1,5 +1,5 @@
 # Advance Python concepts notes and example codes
-I have explained advance python concepts in simple terms here.
+### I have explained most of the advance python concepts in simple terms for clear understanding.
 
 ## Miscellaneous Concepts
 ### pdb (Python Debugger)
