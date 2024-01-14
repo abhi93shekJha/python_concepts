@@ -242,7 +242,7 @@
 
 - **`nonlocal` keyword:**
 
-    - As `global` is used to make use of global variables inside a local scope, `nonlocal` is used to make use of a parent local variable inside a child local scope.
+    - As `global` is used to modify global variables inside a local scope, `nonlocal` is used to modify a parent local variable inside a child local scope.
 
     - Example:
 
@@ -257,9 +257,9 @@
             print(local_attr)
         ```
 
-        - `my_parent_local()`   # prints `hey Ram!!!`
+        - `my_parent_local()`   # prints `hey Ram!!!` twice  
 
-        - `hey Ram!!!`   # Parent local attribute got changed in the child local space.
+        -  Parent local attribute got changed in the child local space.
 
     - Once a function finishes, all the local variables are destroyed to free up space by the garbage collector.
 
