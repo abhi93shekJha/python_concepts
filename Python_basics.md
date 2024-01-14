@@ -74,6 +74,7 @@
 - **Tuples:**
 
     - Tuples are immutable. They cannot be modified. Every alteration creates a new tuple object.
+    - Adding, deleting or assigning element to a tuple will throw error.
 
     - Similar to a list, `a, b, c, *other = (1, 2, 3, 4, 5, 6, 7)`
 
