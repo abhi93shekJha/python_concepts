@@ -1,9 +1,11 @@
 # Generators in python
+- It is an special type of iterator.
 - For faster iteration. Faster because they only compute next value when requested.
 - range(100) is created using generator. I have created a custom range below for understanding.
 - A generator is always an iterator, an iterator may or may not be a generator (for example list, or tuple are not generators).
 - A generator is created using "yield" keyword. "yield" pauses the current function and returns the current value, when next is called on that function.
 - Using "yield" keeps only the current value in the memory forgetting about previous values, making it no space consuming and faster as compared to using a list or other similar data structures.
+- When next is called or when using a for loop on a generator, it runs the generator till yield and saves its state. After this when again it is called(using for loop or next), it process the remaing code after and before yield and again returns at yield saving it's state there.
 - Example of a generator is shown below.
 ### Note:
 - for i in range(100), here, this for loop internally calls next() on the range generator one after another.
@@ -15,9 +17,9 @@ def generator(num):
     yield i
 
 my_generator = generator(20)
-next(my_generator)
-next(my_generator)
-print(next(my_generator))
+next(my_generator)     # 0
+next(my_generator)     # 1
+print(next(my_generator))   # prints, 2
 
 my_generator = generator(1)    # only for 1
 next(my_generator)
