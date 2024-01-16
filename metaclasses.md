@@ -1,6 +1,11 @@
 ### Metaclasses basics
 - As we know that in python classes themselves are objects, unlike java etc.
 - In python, 'type' is a class that creates class object.
+- All the classes implicitly implements 'type' class as its metaclass, as shown below.
+```python
+class MyClass(metaclass=type):
+  ...attributes and methods below
+```
 - When the simple class creation syntax is run (class A:pass), then internally an object of "type" class is created which is a class object.
 - Then internally this class object is used to create instance of this class.
 - Below example will expain with comments, how class object gets created.
