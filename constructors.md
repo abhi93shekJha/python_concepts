@@ -47,3 +47,20 @@ class MyClass:
     pass
 my_class = MyClass()
 ```
+6. Note that like java, it is not mandatory to call parent's constructor if a construtor is present in parent.
+Example below.
+```python
+class A_Parent:
+  def __init__(self, a, b):
+    self.a = a
+    self.b = b
+
+class B_Child(A_Parent):
+  def __init__(self, c, d):
+    # not necessary to call super().__init__(4, 5)
+    self.c = c
+    self.d = d
+
+child = B_Child(1, 3)
+print(child.a) # this will throw an error, as it will assume child class don't have a and b, since no call to super constructor
+```
