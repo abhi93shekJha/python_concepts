@@ -8,6 +8,7 @@ class MyClass:
   # for different objects
   x: str
   y: int
+  class_attr: str = "default value"  # this is a class attribute, since providing default value
 
 # we should give keyword arguments to the constructor, 
 # to avoid any confusion
