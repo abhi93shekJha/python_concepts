@@ -11,13 +11,18 @@ def my_function(parameter1, parameter2):
 
 4. Lambda function - for simple operations,
 	eg.- square = lambda x: x * x
+5. Lambda function can only have one line expression which is returned.
+```python
+my_fun = lambda x, y, z: x*y*z
+print(my_fun(4, 3, 5))  # prints, 60
+```
 	
-5. default parameters: eg. = def myfun(a, b=10) #will be used if no arguement for b is passed to the funtion.
+6. default parameters: eg. = def myfun(a, b=10) #will be used if no arguement for b is passed to the funtion.
 
-6. keyword arguments:
+7. keyword arguments:
 	eg - greet(name="Alice", age=25)
 	
-7. Using *args and **kwargs: to accept variable number of positional and keyword arguments.
+8. Using *args and **kwargs: to accept variable number of positional and keyword arguments.
 		
 	    def add(*args):
             result = 0
@@ -34,10 +39,10 @@ def my_function(parameter1, parameter2):
 
         process_data(name="Alice", age=25, city="New York")
 
-8. Higher Order Function (HOF) is a function in python that either accepts a function as a parameter or returns a function.
+9. Higher Order Function (HOF) is a function in python that either accepts a function as a parameter or returns a function.
    Below are some HOF explained.
    
-9. Using Functions as Variables:
+10. Using Functions as Variables:
    (i) Assigning Functions to Variables:
    
    	    def say_hello():
@@ -67,7 +72,7 @@ def my_function(parameter1, parameter2):
 	    result = double(5)  # result will be 10
 		
 		
-10. Callback Functions:
+11. Callback Functions:
     
     It is a function that is passed to another function, and is executed within or after the execution of that function.
     
@@ -100,7 +105,7 @@ def my_function(parameter1, parameter2):
         sort_and_callback(numbers, find_max_sorted_list)
     
 
-11. Closure functions:
+12. Closure functions:
 	
     A concept where a function is enclosed inside a function. Function that are used inside a function and uses the variables of enclosing function.
     
