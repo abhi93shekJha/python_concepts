@@ -37,7 +37,7 @@ unknown = Student.create_student_with_rollno(29)
 print(sushant.rollno)  # 0
 print(unknown.name)   # -
 ```
-Another way is to have keyword arguement or defaut arguement
+Another way is to have keyword arguement or default arguement
 
 3. We do not have return type for constructor.
 4. No access modifiers for constructors.
