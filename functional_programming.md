@@ -1,0 +1,3 @@
+- Simply put, in functional programming we keep data and functions separated from each other.
+- The basic pillar of functional programming are pure functions.
+- Pure functions are functions that do not interact with outside world, i.e. print something to console or change any variable out of its own scope.
