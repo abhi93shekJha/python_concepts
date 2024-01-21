@@ -2,7 +2,7 @@
 - As we know exception is something that is intended to be caught at runtime and error is a more broader term which include exceptions and may terminate the complete program at once.
 - Python Errors - These are caught at the time of compilation and the code never runs (SyntaxError, IndentationError).
 - Python Runtime errors (Exceptions) - These are thrown at runtime by programmer (CustomExceptions) or by interpreter (ValueError, TypeError, ZeroDivisionError) and handled by try, catch.
-- Unlike Java, all the errors and exceptions inherits from BaseException, Exception class is a subclass of BaseException.
+- Unlike Java, all the errors and exceptions inherits from BaseException, Exception class is a subclass of BaseException. RuntimeError and rest of the classes all inherit from Exception.
 - finally block always runs.
 ### Notes:
 - ValueError is raised by python functions or by our functions when there is an issue with the argument. Ex. int("dsf")
