@@ -3,7 +3,7 @@
 - Pure functions are functions that do not interact with outside world, i.e. printing something to console or changing any variable out of its own scope.
 - It should work on local variables and return the required output and should not change anything outside of it's scope.
 - Writing pure functions in a bigger project helps reduce errors.
-### Map
+### map, filter, zip and reduce
 ```python
 # this is pure function
 def square(item):
@@ -51,3 +51,5 @@ result = reduce(accumulator, my_list, 0)  # 0 is default too
 print(result)  # prints, 15
 
 ```
+- We can also use lambda for one line functions.
+- In functional programming, there are concepts like list, set and dictionary comprehensions, and we already know them.
