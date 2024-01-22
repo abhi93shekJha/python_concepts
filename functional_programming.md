@@ -47,7 +47,7 @@ def accumulator(acc, item):
 
 my_list = [1, 2, 3, 4, 5]
       # function  , iterable, start number (not index)  
-result = reduce(accumulator, my_list, 0)
+result = reduce(accumulator, my_list, 0)  # 0 is default too
 print(result)  # prints, 15
 
 ```
