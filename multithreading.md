@@ -132,40 +132,59 @@ my_thread.join()
 ```
 ### ThreadPoolExcecutor
 - We should not always create and destroy a separate thread (as we did above) for ad-hoc tasks. If there are many ad-hoc tasks.
-- This is a resource and time consuming process. As threads have their own stack, register and creating and destroying is time taking process.
-- We should have pool of worker threads to execute bulk of tasks as it comes. ThreadPoolExecutor helps with this.
+- This is a resource and time consuming process. As threads have their own stack, register and creating and destroying thread is time taking process.
+- We should have fixed pool of worker threads to execute bulk of tasks as it comes, and destroy the threads when all the tasks finishes. ThreadPoolExecutor helps with this.
+- In this, all the threads will take tasks from task queue and finish thoses first concurrently before moving to other tasks.
 
 ```python
 from concurrent.futures import ThreadPoolExecutor
 import time
 def my_fun(thread_num):
-  time.sleep(3)
   print(f'Thread {thread_num} is executing!!')
+  time.sleep(3)
   print(f"Thread {thread_num} finished executing!!")
   return thread_num
 
 if __name__ == "__main__":
+  
   # using context manager is a good practice, as it closes automatically
   with ThreadPoolExecutor(max_workers=4) as executor:
     results = executor.map(my_fun, [0, 1, 2, 3, 4, 5], timeout=10)
-    # this results is an iterable and gives us output sequentially 
+    # this results is an iterable and gives us output sequentially,
     # according to input passed to map()
     # timeout will wait for 10 seconds for the tasks to complete, otherwise raises TimeoutError()
-    for result in results: # this blocks
+    for result in results: # this line is blocking, (we get results according to input passed).
       # result contains what is returned from the function
+      # We can catch exceptions here using try, catch
       print(result)   # waits and then prints
 
-  # using submit, returns a Future object
+  # using submit with result, It returns a Future object
   with ThreadPoolExecutor(max_workers=5) as executor:
     # submit is a non blocking call
     future1 = executor.submit(my_fun, 0)
     future2 = executor.submit(my_fun, 1)
 
     # these two are blocking calls
+    # We should be using try catch here.
     print(future1.result(timeout=5))  # timeout is optional 
     print(future2.result())
+
+  # using concurrent.futures.as_completed method, it will give the result in the order they are finishing.
+  with ThreadPoolExecutor(max_workers=5) as executor:
+    tasks = [1, 2, 3, 4, 5]
+    futures = [executor.submit(task) for task in tasks]
+    for future in concurrent.futures.as_completed(futures):
+      try:
+        result = future.result()
+        print(f"Using {result}")
+      except Exception as e:
+        print(e)
     
   print("Main done!")
+  # NOTE: executor.map or executor.submit will not throw any exception, even if the function throws an exception,
+  # It throws exception when we try utilizing the returned result
+  # Also, with context managers being used, there is no need to add join, It will first wait for all the threads
+  # to finish and then execute main thread.
 ```
 
 ### Race condition
