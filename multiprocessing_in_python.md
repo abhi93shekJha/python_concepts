@@ -1,5 +1,5 @@
 ### Mutiprocessing in python
-- As we know that in python, because of GIL (Global Interpreter Lock), only one thread is allowed to execute at a time in interpreter.
+- As we know that in python (CPython interpreter), because of GIL (Global Interpreter Lock), only one thread is allowed to execute at a time in interpreter. This is implemented by CPython to ensure thread-safe memory management.
 - Unlike Java or other programming languages which allows multiple threads to run parallely inside multiple CPU cores, python can only run one thread at a time.
 - When we run multithreading in python, the tasks run concurrently instead of running parallely.
 - Multithreading, however, is useful for utilising waiting time at the time of I/O bound operations (reading/writing to a file, waiting for a network response).
