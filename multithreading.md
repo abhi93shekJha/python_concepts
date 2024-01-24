@@ -172,7 +172,7 @@ if __name__ == "__main__":
   # using concurrent.futures.as_completed method, it will give the result in the order they are finishing.
   with ThreadPoolExecutor(max_workers=5) as executor:
     tasks = [1, 2, 3, 4, 5]
-    futures = [executor.submit(task) for task in tasks]
+    futures = [executor.submit(my_fun, task) for task in tasks]
     for future in concurrent.futures.as_completed(futures):
       try:
         result = future.result()
