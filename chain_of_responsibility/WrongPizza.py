@@ -1,2 +1,0 @@
-class WrongPizza(Exception):
-    pass
