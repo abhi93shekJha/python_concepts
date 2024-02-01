@@ -131,10 +131,10 @@ my_thread.start()
 my_thread.join()
 ```
 ### ThreadPoolExcecutor
-- We should not always create and destroy a separate thread (as we did above) for ad-hoc tasks. If there are many ad-hoc tasks.
+- We should not always create and destroy a separate thread (as we did above) for ad-hoc tasks, if there are many ad-hoc tasks.
 - This is a resource and time consuming process. As threads have their own stack, register and creating and destroying thread is time taking process.
 - We should have fixed pool of worker threads to execute bulk of tasks as it comes, and destroy the threads when all the tasks finishes. ThreadPoolExecutor helps with this.
-- In this, all the threads will take tasks from task queue and finish thoses first concurrently before moving to other tasks.
+- In this, all the threads will take tasks from task queue and finish those first concurrently, before moving to other tasks.
 
 ```python
 from concurrent.futures import ThreadPoolExecutor
