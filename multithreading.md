@@ -37,7 +37,7 @@
 ### Concurrency
 - It is not parallel execution. Multiple threads can work on multiple tasks by jumping from on task to another (context switching). But at one time only one thread runs.
 - Context switching is time consuming.
-- A single core can only execute one thread at a time concurrently.
+- A single core can only execute one thread at a time.
 - It is generally helpful when there is heavy I/O operations (reading, writing to a file, making a network request etc.).
 - In python multithreading is only concurrent unlike java where is it parallel as well.
 
