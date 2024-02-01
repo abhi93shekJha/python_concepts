@@ -32,7 +32,7 @@ if __name__=="__main__":
 
   print(f"Time taken: {end_time-start_time}")  # prints, Time taken: 1.513805866241455
 ```
-- We are now creating 10 threads. Note that this will also take almost 1.6 seconds only, even if I don't have 10 cores in my CPU.
+- We are now creating 10 processes. Note that this will also take almost 1.6 seconds only, even if I don't have 10 cores in my CPU.
 - This is because processes have their ways of distributing tasks internally.
 ```python
 import multiprocessing
