@@ -66,3 +66,4 @@ print(db.port) #prints, 8000
 - Now, we can add validation logic out of constructor.
 - Also, the object can be make immutable, by making the attributes private for Database class and only exposing getters.
 - Also, we can only initialize the attributes which are mandatory and add this logic in build method.
+- The methods that are returning self inside Builder class are called 'fluent interface'.
