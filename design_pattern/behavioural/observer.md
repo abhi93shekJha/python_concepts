@@ -71,9 +71,6 @@ bitcoin_tracker.update_price(20)
 # Sending tweet with message 20
 
 bitcoin_tracker.update_price(30)
-# Sending email with message 20
-# Sending sms with message 20
-# Sending tweet with message 20
 # Sending email with message 30
 # Sending sms with message 30
 # Sending tweet with message 30
