@@ -1,3 +1,12 @@
+### Linux
+- It is an open-source software. Many individuals and communities have created their own version of linux called linux distributions.
+- Each distributions fits their specific needs like running servers, desktop applications, mobile apps etc.
+- Example of linux distributions are Ubuntu, Debian, Alpine, Fedora, Centos etc. There are 1000s of them present.
+- Most of the linux commands are same for these, sometimes they differ.
+- Ubuntu is most popular linux distribution widely used.
+
+  
+
 ### Some linux terms:
 - Shell - General name for command line interface. (Ex. Bash, Zsh etc.)
 - Bash - Command line shell to interact with an operating system in Unix-like environment.
