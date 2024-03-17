@@ -24,8 +24,8 @@
 
 ### Few more commands:
 - mkdir test
-- mv test docker: moves or renames a directory. (here renames test to directory)
-- touch hello.txt file1.tex file2.txt: creates a new empty file.
+- mv test docker: moves or renames a directory. (here renames test to docker)
+- touch hello.txt file1.tex file2.txt: creates new empty files.
 - rm hello.txt file1.txt: removes files
 - rm file* : removes file1.txt, file2.txt
 - rm -r docker/: removes the directory with all its content recursively.
