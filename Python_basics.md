@@ -21,7 +21,7 @@
 
     - The Python code is run by an interpreter (e.g., CPython, Jython, PyPy, etc., interpreters written in C, Java, or Python languages, respectively).
 
-    - It is converted into bytecode(.pyc files), which in turn is fed to the CPython virtual machine (CPython VM) which iterprets it line by line to convert it to machine readable instructions. After this, it runs on our machine (laptop, mobile, etc.).
+    - It is first converted into bytecode(.pyc files) by interpreting line by line, which in turn is fed to the CPython virtual machine (CPython VM) which iterprets it line by line to convert it to machine readable instructions. After this, it runs on our machine (laptop, mobile, etc.).
 
     - When we download Python, we actually download the CPython interpreter, and all the documentations are written according to the CPython interpreter.
 
