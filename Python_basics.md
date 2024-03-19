@@ -85,10 +85,12 @@
 - **Sets:**
 
     - Sets are unordered unique sets of items.
+    - Sets can only contain hashable objects, immutable objects (tuple, string, integer, float, frozensets) are hashable.
+    - We can override __hash __ dunder to make any object hashable other than immutable objects.
 
-    - You cannot access them using an index.
+    - You cannot access them using an index, since they are unordered.
 
-    - O(1) time check for item existence.
+    - O(1) time check for item existence in average, ex. 2 in {1, 2, 3, 4} # True
 
     - They support all mathematical set operations, e.g., Union, isDisjoint, isSubset, isSuperSet, difference, differenceUpdate, intersection, etc.
 
@@ -108,9 +110,9 @@
 
         - `[1, 2, 3] is [1, 2, 3]`  # False (because both list objects are created in different memory locations)
 
-        - `1 is 1`                  # True
+        - `1 is 1`                  # True # both are different but gives true because python caches small integers
 
-        - `'abc' is 'abc'`          # True (both are in the same location, so it's true)
+        - `'abc' is 'abc'`          # True (python caches small strings, so it's true)
 
 - **for and while:**
 
