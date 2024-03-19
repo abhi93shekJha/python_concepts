@@ -7,7 +7,7 @@
 - We will have to return instance from `__new__`, which is taken by `__init__` as self.
 - Everything in Python is an object.
 - A 'class object' is not instance of that class, but the class itself.
-- We can use it to access class attributes (that is represented by static variables in Java).
+- We can use it to access class attributes (which is represented by static variables in Java).
 
 ### Example Usage of `__new__`
 
